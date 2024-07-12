@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;    
+
 return [
 
     /*
@@ -36,6 +38,10 @@ return [
     */
 
     'guards' => [
+        'token' => [
+            'driver' => 'token',
+            'provider' => 'users'
+        ],
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
