@@ -36,4 +36,8 @@ Route::get("/users/current", [UserController::class, "current"])
 Route::get("/api/users/current", [UserController::class, "current"])
        ->middleware(["auth:token"]);
 
-       require __DIR__.'/auth.php';
+Route::get("/simple-api/users/current", [UserController::class, "current"])
+    ->middleware(["auth:simple-token"]);
+
+
+require __DIR__.'/auth.php';
