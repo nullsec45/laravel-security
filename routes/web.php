@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{ProfileController, UserController};
+use App\Http\Controllers\{ProfileController, UserController,TodoController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post("/api/todo", [TodoController::class, "create"]);
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
