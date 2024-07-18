@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Database\Seeders\UserSeeder;
-use App\Models\User;a
+use App\Models\User;
 
 class UserControllerTest extends TestCase
 {
