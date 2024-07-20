@@ -55,6 +55,6 @@ class GateTest extends TestCase
 
         $response=Gate::inspect("delete-contact");
         self::assertFalse($response->allowed());;
-    self::assertEquals("You are not admin!", $response->message());
+        self::assertEquals("You are not admin!", $response->message());
     }
 }
