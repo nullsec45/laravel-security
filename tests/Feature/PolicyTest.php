@@ -8,6 +8,7 @@ use Tests\TestCase;
 use App\Models\{Todo, User};
 use Database\Seeders\{UserSeeder, TodoSeeder};
 use Illuminate\Support\Facades\{Auth, Gate};
+use Illuminate\Support\Facades\Hash;
 
 class PolicyTest extends TestCase
 {
@@ -40,5 +41,22 @@ class PolicyTest extends TestCase
        self::assertTrue($user->can("update", $todo));
        self::assertTrue($user->can("delete", $todo));
        self::assertTrue($user->can("create", Todo::class));
+    }
+
+    public function testBefore(){
+      $this->seed([UserSeeder::class, TodoSeeder::class]);
+      $todo=Todo::first();
+
+      $user=new User(
+         [
+            "name" => "superadmin",
+            "email" => "superadmin@localhost",
+            "password" => Hash::make("rahasia")
+         ]
+      );
+
+      self::assertTrue($user->can("view", $todo));
+      self::assertTrue($user->can("update", $todo));
+      self::assertTrue($user->can("delete", $todo));
     }
 }
